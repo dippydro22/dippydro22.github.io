@@ -17,12 +17,16 @@ title: YORU Dev Log
   <article class="card">
     <h2>POST</h2>
     <ul class="post-list">
-      {% for post in site.posts limit:5 %}
+      {% assign recent_posts = site.posts | sort: "date" | reverse %}
+      {% for post in recent_posts limit:5 %}
       <li class="post-item">
         <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       </li>
       {% endfor %}
+      {% if recent_posts.size == 0 %}
+      <li class="post-item">아직 등록된 포스트가 없습니다. `_posts/YYYY-MM-DD-title.md` 형식으로 추가해보세요.</li>
+      {% endif %}
     </ul>
 
     <a class="notion-link-card" href="https://oasis-year-a9f.notion.site/Yoru-8a40cf02ed344884a8c3f2dd08afc605?pvs=74" target="_blank" rel="noopener noreferrer">
