@@ -1,0 +1,63 @@
+---
+layout: default
+title: All Posts
+---
+
+<section class="card posts-page">
+  <h1>All Posts</h1>
+
+  {% assign all_posts = site.posts | sort: "date" | reverse %}
+
+  <h2 class="post-group-title">Diary</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign primary_category = post.category | default: '' | downcase %}
+      {% assign categories_text = post.categories | join: ',' | downcase %}
+      {% if primary_category == 'diary' or categories_text contains 'diary' %}
+      <li class="post-item">
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge diary">DIARY</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h2 class="post-group-title">Info</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign primary_category = post.category | default: '' | downcase %}
+      {% assign categories_text = post.categories | join: ',' | downcase %}
+      {% if primary_category == 'info' or categories_text contains 'info' %}
+      <li class="post-item">
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge info">INFO</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h2 class="post-group-title">Other</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign primary_category = post.category | default: '' | downcase %}
+      {% assign categories_text = post.categories | join: ',' | downcase %}
+      {% unless primary_category == 'diary' or categories_text contains 'diary' %}
+      {% unless primary_category == 'info' or categories_text contains 'info' %}
+      <li class="post-item">
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge other">OTHER</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
+      </li>
+      {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
+</section>
