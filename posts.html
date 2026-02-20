@@ -1,0 +1,56 @@
+---
+layout: default
+title: All Posts
+---
+
+<section class="card posts-page">
+  <h1>All Posts</h1>
+
+  {% assign all_posts = site.posts | sort: "date" | reverse %}
+
+  <h2 class="post-group-title">Diary</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign post_type = post.category | default: post.categories | first | default: 'info' | downcase %}
+      {% if post_type == 'diary' %}
+      <li class="post-item">
+        <span class="post-type-badge diary">DIARY</span>
+        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h2 class="post-group-title">Info</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign post_type = post.category | default: post.categories | first | default: 'info' | downcase %}
+      {% if post_type == 'info' %}
+      <li class="post-item">
+        <span class="post-type-badge info">INFO</span>
+        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h2 class="post-group-title">Other</h2>
+  <ul class="post-list">
+    {% for post in all_posts %}
+      {% assign post_type = post.category | default: post.categories | first | default: '' | downcase %}
+      {% unless post_type == 'diary' %}
+      {% unless post_type == 'info' %}
+      <li class="post-item">
+        <span class="post-type-badge other">OTHER</span>
+        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+      {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  </ul>
+
+  <a class="back-link" href="{{ '/' | relative_url }}">← Back to Home</a>
+</section>
