@@ -129,6 +129,12 @@ body {
 .post-item { border: 1px solid rgba(255,120,120,.24); border-radius: 12px; padding: 12px; }
 .post-item a { color: #fff; text-decoration: none; }
 .post-item time { color: #d9aaaa; font-size: .82rem; }
+.post-item-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+.post-item-link strong { color: #fff; }
 
 .notion-link-card {
   margin-top: 14px; display: block; text-decoration: none;

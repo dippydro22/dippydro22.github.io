@@ -22,7 +22,7 @@ title: YORU Dev Log
       <h2 class="career-title">Career</h2>
       <div class="career-list">
         <p class="career-item"><span class="career-role">Unreal Dev</span><span class="career-period">2023.11~2024.08</span></p>
-        <p class="career-item"><span class="career-role">C++ Embedded Dev</span><span class="career-period">2024.08~ing</span></p>
+        <p class="career-item"><span class="career-role">Embedded Dev</span><span class="career-period">2024.08~ing</span></p>
       </div>
     </aside>
 
@@ -52,9 +52,11 @@ title: YORU Dev Log
       {% for post in recent_posts limit:3 %}
       {% assign post_type = post.category | default: post.categories | first | default: 'info' | downcase %}
       <li class="post-item">
-        <span class="post-type-badge {{ post_type }}">{{ post_type | upcase }}</span>
-        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge {{ post_type }}">{{ post_type | upcase }}</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
       </li>
       {% endfor %}
       {% if recent_posts.size == 0 %}

@@ -15,9 +15,11 @@ title: All Posts
       {% assign categories_text = post.categories | join: ',' | downcase %}
       {% if primary_category == 'diary' or categories_text contains 'diary' %}
       <li class="post-item">
-        <span class="post-type-badge diary">DIARY</span>
-        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge diary">DIARY</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
       </li>
       {% endif %}
     {% endfor %}
@@ -30,9 +32,11 @@ title: All Posts
       {% assign categories_text = post.categories | join: ',' | downcase %}
       {% if primary_category == 'info' or categories_text contains 'info' %}
       <li class="post-item">
-        <span class="post-type-badge info">INFO</span>
-        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge info">INFO</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
       </li>
       {% endif %}
     {% endfor %}
@@ -46,9 +50,11 @@ title: All Posts
       {% unless primary_category == 'diary' or categories_text contains 'diary' %}
       {% unless primary_category == 'info' or categories_text contains 'info' %}
       <li class="post-item">
-        <span class="post-type-badge other">OTHER</span>
-        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="post-item-link" href="{{ post.url | relative_url }}">
+          <span class="post-type-badge other">OTHER</span>
+          <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+          <strong>{{ post.title }}</strong>
+        </a>
       </li>
       {% endunless %}
       {% endunless %}
