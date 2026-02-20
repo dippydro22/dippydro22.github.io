@@ -1,0 +1,10 @@
+title: YORU Dev Log
+description: YORU의 개발/게임 기록 블로그
+lang: ko
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+future: true
+timezone: Asia/Seoul
