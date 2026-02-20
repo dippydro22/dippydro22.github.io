@@ -4,13 +4,30 @@ title: YORU Dev Log
 ---
 
 <section class="hero">
-  <span class="badge">💻 C++ DEV · GAME LIFE</span>
-  <h1>YORU</h1>
-  <p>
-    University - <span class="fx-hongik">Hongik</span><br />
-    Job - <span class="fx-cpp">C++ Dev</span><br />
-    Game - <span class="fx-er">EternalReturn</span>, <span class="fx-lostark">LostArk</span>
-  </p>
+  <div class="hero-grid">
+    <div>
+      <span class="badge">💻 C++ DEV · GAME LIFE</span>
+      <h1>YORU</h1>
+      <p>
+        University - <span class="fx-hongik">Hongik</span><br />
+        Job - <span class="fx-cpp">C++ Dev</span><br />
+        Game - <span class="fx-er">EternalReturn</span>, <span class="fx-lostark">LostArk</span>
+      </p>
+    </div>
+
+    <aside class="hero-stack">
+      <h2>Teck Stack</h2>
+      <div class="stack-list">
+        <span class="stack-item csharp">C#</span>
+        <span class="stack-item nodejs">Node.js</span>
+        <span class="stack-item java">JAVA</span>
+        <span class="stack-item unreal">UnrealEngine</span>
+        <span class="stack-item unity">Unity</span>
+        <span class="stack-item blender">Blender</span>
+        <span class="stack-item maya">MAYA</span>
+      </div>
+    </aside>
+  </div>
 </section>
 
 <section class="card career-card">
@@ -30,7 +47,7 @@ title: YORU Dev Log
     </div>
     <ul class="post-list">
       {% for post in recent_posts limit:3 %}
-      {% assign post_type = post.category | default: post.categories | first | default: 'info' %}
+      {% assign post_type = post.category | default: post.categories | first | default: 'info' | downcase %}
       <li class="post-item">
         <span class="post-type-badge {{ post_type }}">{{ post_type | upcase }}</span>
         <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
@@ -42,19 +59,6 @@ title: YORU Dev Log
       {% endif %}
     </ul>
   </article>
-
-  <aside class="card">
-    <h2>Teck Stack</h2>
-    <div class="stack-list">
-      <span class="stack-item csharp">C#</span>
-      <span class="stack-item nodejs">Node.js</span>
-      <span class="stack-item java">JAVA</span>
-      <span class="stack-item unreal">UnrealEngine</span>
-      <span class="stack-item unity">Unity</span>
-      <span class="stack-item blender">Blender</span>
-      <span class="stack-item maya">MAYA</span>
-    </div>
-  </aside>
 </section>
 
 <section class="card study-card">
