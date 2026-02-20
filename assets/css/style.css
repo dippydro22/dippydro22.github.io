@@ -21,8 +21,8 @@ body {
 .container { width: min(1060px, 92vw); margin: 0 auto; }
 .home-button {
   position: fixed;
-  top: 12px;
-  left: max(16px, calc(50vw - 430px));
+  top: 8px;
+  left: calc((100vw - min(1060px, 92vw)) / 2);
   z-index: 200;
   display: inline-block;
   padding: 9px 14px;
