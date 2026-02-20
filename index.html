@@ -1,1 +1,70 @@
+---
+layout: default
+title: YORU Dev Log
+---
 
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <span class="badge">💻 C++ DEV · GAME LIFE</span>
+      <h1>YORU</h1>
+      <p>
+        University - <span class="fx-hongik">Hongik</span><br />
+        Job - <span class="fx-cpp">C++ Dev</span><br />
+        Game - <span class="fx-er">EternalReturn</span>, <span class="fx-lostark">LostArk</span>
+      </p>
+    </div>
+
+    <aside class="hero-career">
+      <h2 class="career-title">Career</h2>
+      <div class="career-list">
+        <p class="career-item"><span class="career-role">Unreal Dev</span><span class="career-period">2023.11~2024.08</span></p>
+        <p class="career-item"><span class="career-role">C++ Embedded Dev</span><span class="career-period">2024.08~ing</span></p>
+      </div>
+    </aside>
+
+    <aside class="hero-stack">
+      <h2>Teck Stack</h2>
+      <div class="stack-list">
+        <span class="stack-item csharp">C#</span>
+        <span class="stack-item nodejs">Node.js</span>
+        <span class="stack-item java">JAVA</span>
+        <span class="stack-item unreal">UnrealEngine</span>
+        <span class="stack-item unity">Unity</span>
+        <span class="stack-item blender">Blender</span>
+        <span class="stack-item maya">MAYA</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="layout">
+  <article class="card">
+    {% assign recent_posts = site.posts | sort: "date" | reverse %}
+    <div class="post-header">
+      <h2>POST</h2>
+      <a class="plus-link" href="{{ '/posts.html' | relative_url }}" aria-label="전체 포스트 페이지로 이동">+</a>
+    </div>
+    <ul class="post-list">
+      {% for post in recent_posts limit:3 %}
+      {% assign post_type = post.category | default: post.categories | first | default: 'info' | downcase %}
+      <li class="post-item">
+        <span class="post-type-badge {{ post_type }}">{{ post_type | upcase }}</span>
+        <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+      {% if recent_posts.size == 0 %}
+      <li class="post-item">아직 등록된 포스트가 없습니다. `_posts/YYYY-MM-DD-title.md` 형식으로 추가해보세요.</li>
+      {% endif %}
+    </ul>
+  </article>
+</section>
+
+<section class="card study-card">
+  <h2>Study</h2>
+  <a class="notion-link-card" href="https://oasis-year-a9f.notion.site/Yoru-8a40cf02ed344884a8c3f2dd08afc605?pvs=74" target="_blank" rel="noopener noreferrer">
+    <strong>프로그래밍 공부 To 2023</strong><br />
+    YORU Notion 링크 바로가기
+  </a>
+</section>
