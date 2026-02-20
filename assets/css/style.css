@@ -22,7 +22,7 @@ body {
 .home-button {
   position: fixed;
   top: 12px;
-  left: 24px;
+  left: calc((100vw - min(1060px, 92vw)) / 2 + 8px);
   z-index: 200;
   display: inline-block;
   padding: 9px 14px;
@@ -163,7 +163,7 @@ body {
 .posts-page h1 { margin-top: 0; }
 .back-link { display: inline-block; margin-top: 14px; color: #ffc9c9; text-decoration: none; }
 
-@media (max-width:860px){ .layout{ grid-template-columns:1fr; } .hero-grid{ grid-template-columns:1fr; } .home-button{ left: 16px; } .profile-image{ width:56px; height:56px; } }
+@media (max-width:860px){ .layout{ grid-template-columns:1fr; } .hero-grid{ grid-template-columns:1fr; } .profile-image{ width:56px; height:56px; } }
 
 
 .career-item {
