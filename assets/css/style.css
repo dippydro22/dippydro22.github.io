@@ -36,6 +36,36 @@ body {
   font-weight: 700;
 }
 .layout { display: grid; grid-template-columns: 1.8fr 1fr; gap: 22px; padding-bottom: 22px; }
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.post-header h2 { margin: 0; }
+.all-posts-toggle summary {
+  list-style: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255,77,77,.6);
+  color: #ffd5d5;
+  font-weight: 800;
+  user-select: none;
+}
+.all-posts-toggle summary::-webkit-details-marker { display: none; }
+.all-posts-toggle[open] summary {
+  background: rgba(255,77,77,.22);
+}
+.all-post-list {
+  margin-top: 10px;
+  width: min(420px, 78vw);
+}
 .post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .post-item { border: 1px solid rgba(255,120,120,.24); border-radius: 12px; padding: 12px; }
 .post-item a { color: #fff; text-decoration: none; }

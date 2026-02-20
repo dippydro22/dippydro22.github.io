@@ -15,9 +15,22 @@ title: YORU Dev Log
 
 <section class="layout">
   <article class="card">
-    <h2>POST</h2>
+    {% assign recent_posts = site.posts | sort: "date" | reverse %}
+    <div class="post-header">
+      <h2>POST</h2>
+      <details class="all-posts-toggle">
+        <summary aria-label="전체 포스트 보기">+</summary>
+        <ul class="post-list all-post-list">
+          {% for post in recent_posts %}
+          <li class="post-item">
+            <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
+    </div>
     <ul class="post-list">
-      {% assign recent_posts = site.posts | sort: "date" | reverse %}
       {% for post in recent_posts limit:3 %}
       <li class="post-item">
         <time>{{ post.date | date: "%Y.%m.%d" }}</time><br />
@@ -56,9 +69,8 @@ title: YORU Dev Log
 
     <div class="tab-panels">
       <section class="tab-panel panel-career">
-        <p>University - <span class="fx-hongik">Hongik</span></p>
-        <p>Job - <span class="fx-cpp">C++ Dev</span></p>
-        <p>Game - <span class="fx-er">EternalReturn</span>, <span class="fx-lostark">LostArk</span></p>
+        <p>Unreal Dev 2023.11~2024.08</p>
+        <p>C++ Embedded Dev 2024.08~ing</p>
       </section>
 
       <section class="tab-panel panel-study">
