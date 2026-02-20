@@ -19,6 +19,22 @@ body {
     var(--bg);
 }
 .container { width: min(1060px, 92vw); margin: 0 auto; }
+.home-button {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 100;
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 77, 77, 0.5);
+  background: rgba(8, 8, 8, 0.82);
+  color: #ffe1e1;
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-button:hover { background: rgba(255, 77, 77, 0.18); }
+
 .hero, .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -183,3 +199,17 @@ body {
   gap: 10px;
   flex-wrap: wrap;
 }
+
+.post-back-arrow {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,77,77,.55);
+  color: #ffd5d5;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+.post-back-arrow:hover { background: rgba(255,77,77,.2); }
