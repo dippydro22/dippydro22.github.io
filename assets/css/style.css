@@ -15,7 +15,6 @@ body {
   line-height: 1.65;
   background:
     linear-gradient(rgba(7, 7, 7, 0.84), rgba(7, 7, 7, 0.84)),
-    url("https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3996620/1a1b4572d761277b8c5c6dc5cc9925b313bc891c/page_bg_raw.jpg?t=1764565755") center / cover fixed no-repeat,
     var(--bg);
 }
 .container { width: min(1060px, 92vw); margin: 0 auto; }
@@ -329,3 +328,97 @@ body {
   font-weight: 800;
 }
 .post-back-arrow:hover { background: rgba(255,77,77,.2); }
+
+
+/* Monochrome comic-book theme override */
+:root {
+  --bg: #0a0a0a;
+  --surface: rgba(18, 18, 18, 0.95);
+  --text: #f2f2f2;
+  --subtle: #b8b8b8;
+  --primary: #f5f5f5;
+  --border: #8e8e8e;
+}
+
+body {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,.11) 1px, transparent 0) 0 0 / 7px 7px,
+    repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, rgba(0,0,0,.05) 2px 6px),
+    linear-gradient(rgba(8, 8, 8, 0.95), rgba(8, 8, 8, 0.95)),
+    var(--bg);
+}
+
+.hero,
+.card,
+.hero-career,
+.hero-stack,
+.song-player-wrap,
+.post-item-link,
+.side-project-item-link,
+.notion-link-card {
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.85);
+}
+
+.hero, .card {
+  background: linear-gradient(180deg, rgba(30,30,30,.95), rgba(14,14,14,.95));
+}
+
+.home-button,
+.side-project-button,
+.plus-link,
+.post-back-arrow {
+  background: #121212 !important;
+  color: #f6f6f6 !important;
+  border-color: rgba(255,255,255,.75) !important;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.9);
+  text-shadow: none !important;
+}
+.home-button:hover,
+.side-project-button:hover,
+.plus-link:hover,
+.post-back-arrow:hover {
+  background: #2b2b2b !important;
+}
+
+.badge,
+.project-list-title,
+.career-title,
+.post-group-title,
+.back-link,
+.post-item time,
+.career-item span,
+.career-role,
+.career-period,
+.post-item a,
+.post-item-link strong,
+.side-project-item-link,
+.notion-link-card,
+.stack-item,
+.post-type-badge,
+[class^="fx-"] {
+  color: #efefef !important;
+  text-shadow: none !important;
+  background-image: none !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.stack-item,
+.post-type-badge,
+.fx-kakao {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.45) !important;
+}
+
+.profile-image {
+  border-color: rgba(255,255,255,.72) !important;
+  box-shadow: 0 0 0 2px #0b0b0b, 3px 3px 0 rgba(0,0,0,.85);
+  filter: grayscale(100%) contrast(125%);
+}
+
+.side-project-item-link {
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(115,115,115,.12)) !important;
+}
+
+.career-list { border-top-color: rgba(255,255,255,.42) !important; }
+.career-item { border-bottom-color: rgba(255,255,255,.28) !important; }
