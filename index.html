@@ -51,7 +51,7 @@ title: YORU Dev Log
       <a class="plus-link" href="{{ '/posts.html' | relative_url }}" aria-label="전체 포스트 페이지로 이동">+</a>
     </div>
     <ul class="post-list">
-      {% for post in recent_posts limit:3 %}
+      {% for post in recent_posts limit:2 %}
       {% assign post_type = post.categories | first | default: post.category | default: 'info' | downcase %}
       <li class="post-item">
         <a class="post-item-link" href="{{ post.url | relative_url }}">
