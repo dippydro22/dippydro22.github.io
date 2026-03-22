@@ -192,6 +192,8 @@ body {
 
 .stack-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
 .stack-item { font-size:.8rem; padding:5px 10px; border-radius:999px; border:1px solid transparent; font-weight:700; }
+.cpp { color:#9ec5ff; background:rgba(59,130,246,.18); border-color:rgba(147,197,253,.45); }
+.python { color:#f9e79f; background:rgba(250,204,21,.18); border-color:rgba(253,224,71,.45); }
 .csharp { color:#d8b4fe; background:rgba(168,85,247,.18); border-color:rgba(216,180,254,.45); }
 .nodejs { color:#9be38f; background:rgba(34,197,94,.18); border-color:rgba(134,239,172,.45); }
 .java { color:#ffb4a2; background:rgba(249,115,22,.18); border-color:rgba(253,186,116,.45); }
