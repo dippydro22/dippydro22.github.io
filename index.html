@@ -46,6 +46,19 @@ title: YORU Dev Log
 </section>
 
 <section class="layout">
+  <aside class="card song-card">
+    <h2>최근 듣는 노래</h2>
+    <div class="song-player-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/ywYUUJYkDqg?list=RDywYUUJYkDqg&autoplay=0&rel=0&controls=1"
+        title="최근 듣는 노래"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </aside>
+
   <article class="card post-card">
     {% assign recent_posts = site.posts | sort: "date" | reverse %}
     <div class="post-header">
@@ -68,8 +81,11 @@ title: YORU Dev Log
       {% endif %}
     </ul>
   </article>
+</section>
 
-  <article class="card side-project-card">
+<details class="floating-side-projects">
+  <summary>📁 Side Projects</summary>
+  <div class="floating-side-projects-body">
     <h2 class="project-list-title">Side Project List</h2>
     <ul class="side-project-list">
       <li class="side-project-item">
@@ -85,21 +101,8 @@ title: YORU Dev Log
         <a class="side-project-item-link" href="{{ '/side-project-arcade.html' | relative_url }}">아케이드 게임장</a>
       </li>
     </ul>
-  </article>
-
-  <aside class="card song-card">
-    <h2>최근 듣는 노래</h2>
-    <div class="song-player-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/ywYUUJYkDqg?list=RDywYUUJYkDqg&autoplay=0&rel=0&controls=1"
-        title="최근 듣는 노래"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </aside>
-</section>
+  </div>
+</details>
 
 <section class="card study-card">
   <h2>Study</h2>
