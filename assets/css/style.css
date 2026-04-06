@@ -281,14 +281,15 @@ body {
   .layout{ grid-template-columns:1fr; }
   .post-card, .song-card { grid-column: auto; grid-row: auto; }
   .floating-side-projects {
-    position: static;
-    width: auto;
-    margin-bottom: 16px;
+    right: 12px;
+    top: auto;
+    bottom: 12px;
+    width: min(320px, calc(100vw - 24px));
   }
   .floating-side-projects-body {
-    max-height: none;
-    opacity: 1;
-    overflow: visible;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
   }
   .hero-grid{ grid-template-columns:1fr; }
   .profile-image{ width:56px; height:56px; }
@@ -481,3 +482,88 @@ body {
 
 .career-list { border-top-color: rgba(255,255,255,.42) !important; }
 .career-item { border-bottom-color: rgba(255,255,255,.28) !important; }
+
+.diary-protected .home-button {
+  z-index: 560;
+}
+
+.diary-content-locked {
+  visibility: hidden;
+}
+
+.diary-unlocked .diary-content-locked {
+  visibility: visible;
+}
+
+.diary-page-lock {
+  position: fixed;
+  inset: 0;
+  z-index: 550;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(6, 6, 6, 0.82);
+}
+
+.diary-page-lock-card {
+  width: min(380px, 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 140, 140, 0.45);
+  background: rgba(16, 16, 16, 0.97);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+  padding: 20px;
+}
+
+.diary-page-lock-card h2 {
+  margin: 0 0 10px;
+  color: #ffe1e1;
+}
+
+.diary-page-lock-copy {
+  margin: 0 0 12px;
+  color: #e8dada;
+  font-size: 0.95rem;
+}
+
+.diary-page-lock-form input {
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 160, 160, 0.52);
+  background: rgba(9, 9, 9, 0.9);
+  color: #fff;
+  padding: 10px 11px;
+}
+
+.diary-page-lock-hint {
+  margin: 0 0 12px;
+  color: #d9c2c2;
+  font-size: 0.84rem;
+}
+
+.diary-page-lock-form button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 120, 120, 0.48);
+  background: rgba(255, 87, 87, 0.2);
+  color: #fff2f2;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 9px 10px;
+}
+
+.diary-page-lock-form button:hover {
+  background: rgba(255, 87, 87, 0.3);
+}
+
+.diary-page-lock-message {
+  min-height: 20px;
+  margin: 12px 0 0;
+  color: #bbf7d0;
+  font-size: 0.88rem;
+}
+
+.diary-page-lock-message.error {
+  color: #fecaca;
+}
