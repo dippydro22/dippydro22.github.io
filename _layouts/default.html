@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="ko">
-  {% assign is_diary_post = page.collection == "posts" and page.categories contains "diary" %}
+  {% assign post_type = page.categories | first | default: page.category | default: 'info' | downcase %}
+  {% assign is_diary_post = false %}
+  {% if page.collection == "posts" and post_type == "diary" %}
+    {% assign is_diary_post = true %}
+  {% endif %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
