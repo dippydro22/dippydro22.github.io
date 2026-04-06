@@ -6,10 +6,79 @@
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   </head>
-  <body>
+  <body class="{% if page.categories contains 'diary' %}diary-protected{% endif %}">
     <a class="home-button" href="{{ '/' | relative_url }}">Home</a>
-    <main class="container">
+    <main class="container{% if page.categories contains 'diary' %} diary-content-locked{% endif %}" id="page-container">
       {{ content }}
     </main>
+
+    {% if page.categories contains 'diary' %}
+    <section id="diary-page-lock" class="diary-page-lock" role="dialog" aria-labelledby="diary-page-lock-title" aria-modal="true">
+      <div class="diary-page-lock-card">
+        <h2 id="diary-page-lock-title">비공개 일기</h2>
+        <p class="diary-page-lock-copy">이 페이지는 암호 입력 후 열람할 수 있습니다.</p>
+        <form id="diary-page-lock-form" class="diary-page-lock-form">
+          <input id="diary-page-lock-input" type="password" inputmode="numeric" autocomplete="off" placeholder="암호 입력" maxlength="16" required />
+          <p class="diary-page-lock-hint">힌트: 내 생일</p>
+          <button type="submit">확인</button>
+        </form>
+        <p id="diary-page-lock-message" class="diary-page-lock-message" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <script>
+    (() => {
+      const lock = document.getElementById('diary-page-lock');
+      const form = document.getElementById('diary-page-lock-form');
+      const input = document.getElementById('diary-page-lock-input');
+      const message = document.getElementById('diary-page-lock-message');
+      const container = document.getElementById('page-container');
+
+      if (!lock || !form || !input || !message || !container) return;
+
+      const passwordHash = '948c710e16a15027a561598d053fdf1e910b9d222cab0ac0d09f23a01cc8416b';
+
+      const setMessage = (text, isError = false) => {
+        message.textContent = text;
+        message.classList.toggle('error', isError);
+      };
+
+      const unlock = () => {
+        document.body.classList.add('diary-unlocked');
+        container.classList.remove('diary-content-locked');
+        lock.remove();
+      };
+
+      const hashText = async (value) => {
+        const bytes = new TextEncoder().encode(value);
+        const digest = await crypto.subtle.digest('SHA-256', bytes);
+        return [...new Uint8Array(digest)].map((v) => v.toString(16).padStart(2, '0')).join('');
+      };
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const value = input.value.trim();
+
+        if (!value) {
+          setMessage('암호를 입력해 주세요.', true);
+          input.focus();
+          return;
+        }
+
+        const currentHash = await hashText(value);
+        if (currentHash === passwordHash) {
+          setMessage('확인되었습니다.');
+          unlock();
+          return;
+        }
+
+        setMessage('암호가 일치하지 않습니다.', true);
+        input.select();
+      });
+
+      requestAnimationFrame(() => input.focus());
+    })();
+    </script>
+    {% endif %}
   </body>
 </html>

@@ -482,94 +482,87 @@ body {
 .career-list { border-top-color: rgba(255,255,255,.42) !important; }
 .career-item { border-bottom-color: rgba(255,255,255,.28) !important; }
 
+.diary-protected .home-button {
+  z-index: 560;
+}
 
-.diary-lock-modal {
+.diary-content-locked {
+  visibility: hidden;
+}
+
+.diary-unlocked .diary-content-locked {
+  visibility: visible;
+}
+
+.diary-page-lock {
   position: fixed;
   inset: 0;
-  display: none;
+  z-index: 550;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(5, 5, 5, 0.74);
-  z-index: 500;
   padding: 16px;
+  background: rgba(6, 6, 6, 0.82);
 }
 
-.diary-lock-modal.is-open {
-  display: flex;
+.diary-page-lock-card {
+  width: min(380px, 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 140, 140, 0.45);
+  background: rgba(16, 16, 16, 0.97);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+  padding: 20px;
 }
 
-.diary-lock-card {
-  width: min(360px, 100%);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 150, 190, 0.5);
-  background: linear-gradient(165deg, rgba(33, 10, 22, 0.96), rgba(20, 9, 32, 0.97));
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-  padding: 18px;
+.diary-page-lock-card h2 {
+  margin: 0 0 10px;
+  color: #ffe1e1;
 }
 
-.diary-lock-card h3 {
-  margin: 0 0 8px;
-  color: #ffd1e8;
-}
-
-.diary-lock-copy {
+.diary-page-lock-copy {
   margin: 0 0 12px;
-  color: #ffeef6;
-  font-size: 0.94rem;
+  color: #e8dada;
+  font-size: 0.95rem;
 }
 
-.diary-lock-form input {
+.diary-page-lock-form input {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 176, 212, 0.65);
-  background: rgba(14, 8, 18, 0.95);
+  border: 1px solid rgba(255, 160, 160, 0.52);
+  background: rgba(9, 9, 9, 0.9);
   color: #fff;
   padding: 10px 11px;
 }
 
-.diary-lock-actions {
-  display: flex;
-  gap: 8px;
+.diary-page-lock-hint {
+  margin: 0 0 12px;
+  color: #d9c2c2;
+  font-size: 0.84rem;
 }
 
-.diary-lock-actions button {
-  flex: 1;
+.diary-page-lock-form button {
+  width: 100%;
   border-radius: 10px;
-  border: 1px solid rgba(255, 160, 201, 0.55);
-  background: rgba(255, 117, 177, 0.18);
-  color: #fff4f9;
+  border: 1px solid rgba(255, 120, 120, 0.48);
+  background: rgba(255, 87, 87, 0.2);
+  color: #fff2f2;
   font-weight: 700;
   cursor: pointer;
-  padding: 8px 10px;
+  padding: 9px 10px;
 }
 
-.diary-lock-actions button:hover {
-  background: rgba(255, 117, 177, 0.3);
+.diary-page-lock-form button:hover {
+  background: rgba(255, 87, 87, 0.3);
 }
 
-.diary-lock-message {
+.diary-page-lock-message {
   min-height: 20px;
   margin: 12px 0 0;
+  color: #bbf7d0;
   font-size: 0.88rem;
-  color: #b6ffd4;
 }
 
-.diary-lock-message.error {
-  color: #ffc4c4;
-}
-
-
-.diary-lock-hint {
-  margin: 0 0 10px;
-  font-size: 0.82rem;
-  color: #ffd7ea;
-  opacity: 0;
-  transform: translateY(-2px);
-  transition: opacity .2s ease, transform .2s ease;
-}
-
-.diary-lock-hint.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.diary-page-lock-message.error {
+  color: #fecaca;
 }
