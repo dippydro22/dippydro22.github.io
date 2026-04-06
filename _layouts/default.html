@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="ko">
+  {% assign is_diary_post = page.collection == "posts" and page.categories contains "diary" %}
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title | default: site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
   </head>
-  <body class="{% if page.categories contains 'diary' %}diary-protected{% endif %}">
+  <body class="{% if is_diary_post %}diary-protected{% endif %}">
     <a class="home-button" href="{{ '/' | relative_url }}">Home</a>
-    <main class="container{% if page.categories contains 'diary' %} diary-content-locked{% endif %}" id="page-container">
+    <main class="container{% if is_diary_post %} diary-content-locked{% endif %}" id="page-container">
       {{ content }}
     </main>
 
-    {% if page.categories contains 'diary' %}
+    {% if is_diary_post %}
     <section id="diary-page-lock" class="diary-page-lock" role="dialog" aria-labelledby="diary-page-lock-title" aria-modal="true">
       <div class="diary-page-lock-card">
         <h2 id="diary-page-lock-title">비공개 일기</h2>
