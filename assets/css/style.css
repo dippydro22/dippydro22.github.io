@@ -1,4 +1,10 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@font-face {
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 :root {
   --bg: #f9f9f9;
@@ -18,7 +24,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: 'KyoboHandwriting2021sjy', "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   line-height: 1.6;
   background-color: var(--bg);
@@ -479,9 +485,7 @@ body {
   background: var(--text);
   color: var(--surface);
   padding: 4px 12px;
-  font-weight: 900;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-family: "Pretendard", sans-serif;
 }
 
 .diary-page-lock-card h2,
@@ -526,14 +530,11 @@ body {
 .diary-page-lock-hint,
 .diary-lock-hint {
   margin: 0 0 20px;
-  color: var(--subtle);
-  font-size: 0.9rem;
+  color: var(--text);
+  font-size: 1.05rem;
   font-weight: 800;
   text-align: center;
-  opacity: 0;
-  transition: opacity 0.2s;
 }
-.diary-lock-hint.is-visible { opacity: 1; }
 
 .diary-page-lock-form button,
 .diary-lock-actions button {

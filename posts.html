@@ -59,11 +59,11 @@ title: All Posts
 
 <div id="diary-lock-modal" class="diary-lock-modal" aria-hidden="true" role="dialog" aria-labelledby="diary-lock-title">
   <div class="diary-lock-card">
-    <h3 id="diary-lock-title">🔒 Diary Lock</h3>
-    <p class="diary-lock-copy">이건 비밀 일기장이야! ✨<br />암호를 입력하면 살짝 열어줄게.</p>
+    <h3 id="diary-lock-title">비공개 일기</h3>
+    <p class="diary-lock-copy">이 페이지는 암호 입력 후 열람할 수 있습니다.</p>
     <form id="diary-lock-form" class="diary-lock-form">
       <input id="diary-lock-input" type="password" inputmode="numeric" autocomplete="off" placeholder="암호 4자리" maxlength="16" required />
-      <p id="diary-lock-hint" class="diary-lock-hint" aria-live="polite">💡 힌트: 내 생일</p>
+      <p id="diary-lock-hint" class="diary-lock-hint" aria-live="polite">힌트: 내 생일 4자리</p>
       <div class="diary-lock-actions">
         <button type="submit">열기</button>
         <button type="button" id="diary-lock-cancel">취소</button>
@@ -99,7 +99,6 @@ title: All Posts
     modal.classList.add('is-open');
     input.value = '';
     setMessage('');
-    hint.classList.add('is-visible');
     requestAnimationFrame(() => input.focus());
   };
 
@@ -108,7 +107,6 @@ title: All Posts
     modal.classList.remove('is-open');
     targetUrl = '';
     setMessage('');
-    hint.classList.remove('is-visible');
   };
 
   const hashText = async (value) => {
@@ -129,32 +127,25 @@ title: All Posts
   });
 
   cancel.addEventListener('click', closeModal);
-  input.addEventListener('focus', () => {
-    hint.classList.add('is-visible');
-  });
-
-  input.addEventListener('blur', () => {
-    if (!input.value.trim()) hint.classList.remove('is-visible');
-  });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const value = input.value.trim();
 
     if (!value) {
-      setMessage('암호를 먼저 입력해줘! 🥺', true);
+      setMessage('암호를 입력해 주세요.', true);
       input.focus();
       return;
     }
 
     const currentHash = await hashText(value);
     if (currentHash === passwordHash) {
-      setMessage('정답이야! 문 열어줄게 💖');
+      setMessage('확인되었습니다.');
       window.location.href = targetUrl;
       return;
     }
 
-    setMessage('앗, 암호가 달라! 다시 시도해줘 🙈', true);
+    setMessage('암호가 일치하지 않습니다.', true);
     input.select();
   });
 
