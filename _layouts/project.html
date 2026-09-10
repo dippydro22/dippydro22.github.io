@@ -1,0 +1,118 @@
+---
+layout: default
+---
+
+<style>
+.project-page { margin: 64px 0 40px; }
+.project-back {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--text);
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 2px solid var(--border);
+}
+.project-detail-hero,
+.project-panel {
+  background: var(--surface);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--border);
+}
+.project-detail-hero { padding: 30px; margin-bottom: 24px; }
+.project-kicker { margin: 0 0 8px; color: var(--subtle); font-size: .82rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; }
+.project-detail-title { margin: 0; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.05; font-weight: 900; }
+.project-detail-subtitle { margin: 14px 0 0; color: var(--subtle); font-weight: 800; }
+.project-detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.project-detail-tag, .project-detail-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 2px solid var(--border);
+  font-size: .78rem;
+  font-weight: 900;
+}
+.project-detail-status { background: var(--text); color: var(--surface); }
+.project-shot-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; margin-bottom: 24px; }
+.project-shot {
+  min-height: 220px;
+  border: 4px solid var(--border);
+  background-image: linear-gradient(135deg, #fff 0%, #fff 48%, #f1f1f1 48%, #f1f1f1 52%, #fff 52%, #fff 100%);
+  background-size: 12px 12px;
+  box-shadow: 5px 5px 0 var(--border);
+  display: flex;
+  align-items: flex-end;
+  padding: 18px;
+}
+.project-shot:first-child { min-height: 360px; }
+.project-shot-label { background: var(--text); color: var(--surface); padding: 6px 10px; font-size: .78rem; font-weight: 900; letter-spacing: .5px; }
+.project-content-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; }
+.project-panel { padding: 26px; margin-bottom: 24px; }
+.project-panel h2 { margin: 0 0 14px; padding-bottom: 8px; border-bottom: 3px solid var(--border); font-size: 1.35rem; }
+.project-panel p { margin: 0; font-weight: 650; }
+.project-feature-list { margin: 0; padding-left: 20px; }
+.project-feature-list li { margin: 9px 0; font-weight: 700; }
+.project-flow {
+  margin: 0;
+  padding: 16px;
+  border: 3px solid var(--border);
+  background: var(--highlight);
+  font-family: "Pretendard", sans-serif;
+  font-size: .9rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+.project-note { color: var(--subtle); font-size: .9rem; margin-top: 14px !important; }
+@media (max-width: 780px) {
+  .project-shot-grid, .project-content-grid { grid-template-columns: 1fr; }
+  .project-shot, .project-shot:first-child { min-height: 220px; }
+}
+</style>
+
+<article class="project-page">
+  <a class="project-back" href="{{ '/#selected-works' | relative_url }}">← PROJECTS</a>
+
+  <header class="project-detail-hero">
+    <p class="project-kicker">{{ page.kicker | default: 'PROJECT' }}</p>
+    <h1 class="project-detail-title">{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="project-detail-subtitle">{{ page.subtitle }}</p>{% endif %}
+    <div class="project-detail-tags">
+      {% if page.status %}<span class="project-detail-status">{{ page.status }}</span>{% endif %}
+      {% for tag in page.tags %}<span class="project-detail-tag">{{ tag }}</span>{% endfor %}
+    </div>
+  </header>
+
+  <section class="project-shot-grid" aria-label="Screenshot placeholders">
+    <div class="project-shot"><span class="project-shot-label">MAIN SCREEN · SCREENSHOT LATER</span></div>
+    <div class="project-shot"><span class="project-shot-label">DETAIL · SCREENSHOT LATER</span></div>
+  </section>
+
+  <div class="project-content-grid">
+    <div>
+      <section class="project-panel">
+        <h2>Overview</h2>
+        <p>{{ page.overview }}</p>
+      </section>
+
+      <section class="project-panel">
+        <h2>Core Functions</h2>
+        <ul class="project-feature-list">
+          {% for item in page.features %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+      </section>
+    </div>
+
+    <div>
+      {% if page.flow %}
+      <section class="project-panel">
+        <h2>Flow</h2>
+        <p class="project-flow">{{ page.flow }}</p>
+      </section>
+      {% endif %}
+
+      <section class="project-panel">
+        <h2>Portfolio Notes</h2>
+        {{ content }}
+        <p class="project-note">Screenshots and live links will be added after visual review.</p>
+      </section>
+    </div>
+  </div>
+</article>
