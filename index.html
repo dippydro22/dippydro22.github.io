@@ -4,6 +4,15 @@ title: YORU | C++ Programmer
 ---
 
 <style>
+.hero-grid {
+  grid-template-columns: .95fr 1.05fr 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.hero-main { padding: 2px 4px; }
+.hero-career,
+.hero-stack { height: 100%; }
+
 .profile-meta {
   margin-top: 18px;
   display: grid;
@@ -18,7 +27,7 @@ title: YORU | C++ Programmer
 }
 .profile-meta-label {
   color: var(--subtle);
-  font-size: .78rem;
+  font-size: .76rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .5px;
@@ -28,85 +37,97 @@ title: YORU | C++ Programmer
   overflow-wrap: anywhere;
 }
 
-.portfolio-section {
-  margin-bottom: 28px;
-}
+.portfolio-section { margin-bottom: 28px; }
 .portfolio-section h2 {
   margin: 0 0 18px;
   padding-bottom: 10px;
   border-bottom: 4px solid var(--border);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 900;
 }
 
-.featured-grid {
+.featured-grid,
+.selected-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
-.project-card {
-  min-height: 164px;
+.project-link {
+  color: var(--text);
+  text-decoration: none;
+  min-width: 0;
+}
+.project-card,
+.selected-card {
+  height: 100%;
   border: 3px solid var(--border);
   background: var(--surface);
-  color: var(--text);
-  padding: 20px;
   box-shadow: 5px 5px 0 var(--border);
+  transition: transform .1s ease, box-shadow .1s ease, background .1s ease;
   display: flex;
   flex-direction: column;
+}
+.project-link:hover .project-card,
+.project-link:hover .selected-card {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--border);
+  background: var(--highlight);
+}
+.project-card { min-height: 156px; padding: 18px; justify-content: space-between; }
+.selected-card { min-height: 112px; padding: 16px 17px; justify-content: space-between; }
+.project-topline {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
 }
-.project-card h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: 900;
-}
-.project-tags {
-  margin: 12px 0 18px;
+.project-index {
   color: var(--subtle);
+  font-family: "Pretendard", sans-serif;
+  font-size: .74rem;
+  font-weight: 900;
+  letter-spacing: .8px;
+}
+.project-arrow {
+  font-family: "Pretendard", sans-serif;
+  font-weight: 900;
+  font-size: .9rem;
+}
+.project-card h3,
+.selected-card h3 {
+  margin: 0;
+  font-weight: 900;
+  line-height: 1.15;
+}
+.project-card h3 { font-size: 1.18rem; }
+.selected-card h3 { font-size: 1.02rem; }
+.project-tags {
+  margin: 10px 0 0;
+  color: var(--subtle);
+  font-size: .82rem;
   font-weight: 800;
-  line-height: 1.45;
+  line-height: 1.35;
 }
 .project-status {
   align-self: flex-start;
+  margin-top: 18px;
   border: 2px solid var(--border);
   background: var(--text);
   color: var(--surface);
-  padding: 4px 9px;
-  font-size: .72rem;
+  padding: 3px 8px;
+  font-family: "Pretendard", sans-serif;
+  font-size: .66rem;
   font-weight: 900;
   letter-spacing: .4px;
 }
 
-.selected-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
-.selected-card {
-  min-height: 124px;
-  border: 3px solid var(--border);
-  background: var(--surface);
-  padding: 18px 20px;
-  box-shadow: 4px 4px 0 var(--border);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.selected-card h3 {
-  margin: 0;
-  font-size: 1.08rem;
-  font-weight: 900;
-}
-.selected-card .project-tags {
-  margin: 10px 0 0;
-  font-size: .88rem;
-}
-
 @media (max-width: 860px) {
+  .hero-grid,
   .featured-grid,
   .selected-grid { grid-template-columns: 1fr; }
   .project-card,
-  .selected-card { min-height: 130px; }
+  .selected-card { min-height: 110px; }
 }
 </style>
 
@@ -157,76 +178,56 @@ title: YORU | C++ Programmer
   </div>
 </section>
 
-<section class="card portfolio-section">
+<section class="card portfolio-section" id="featured-projects">
   <h2>Featured Projects</h2>
   <div class="featured-grid">
-    <article class="project-card">
-      <div>
-        <h3>C++ Game Server</h3>
-        <p class="project-tags">Session · Room · JobQueue</p>
-      </div>
-      <span class="project-status">BUILDING</span>
-    </article>
+    <a class="project-link" href="{{ '/projects/cpp-game-server.html' | relative_url }}">
+      <article class="project-card">
+        <div>
+          <div class="project-topline"><span class="project-index">01 / FEATURED</span><span class="project-arrow">↗</span></div>
+          <h3>C++ Game Server</h3>
+          <p class="project-tags">Session · Room · JobQueue</p>
+        </div>
+        <span class="project-status">BUILDING</span>
+      </article>
+    </a>
 
-    <article class="project-card">
-      <div>
-        <h3>FriendsPang</h3>
-        <p class="project-tags">Match · Gravity · Combo</p>
-      </div>
-      <span class="project-status">GAME</span>
-    </article>
+    <a class="project-link" href="{{ '/projects/friendspang.html' | relative_url }}">
+      <article class="project-card">
+        <div>
+          <div class="project-topline"><span class="project-index">02 / FEATURED</span><span class="project-arrow">↗</span></div>
+          <h3>FriendsPang</h3>
+          <p class="project-tags">Match · Gravity · Combo</p>
+        </div>
+        <span class="project-status">GAME LOGIC</span>
+      </article>
+    </a>
 
-    <article class="project-card">
-      <div>
-        <h3>MovieTogether</h3>
-        <p class="project-tags">Room · Sync · State</p>
-      </div>
-      <span class="project-status">SERVER</span>
-    </article>
+    <a class="project-link" href="{{ '/projects/movietogether.html' | relative_url }}">
+      <article class="project-card">
+        <div>
+          <div class="project-topline"><span class="project-index">03 / FEATURED</span><span class="project-arrow">↗</span></div>
+          <h3>MovieTogether</h3>
+          <p class="project-tags">Room · Sync · State</p>
+        </div>
+        <span class="project-status">SERVER / STATE</span>
+      </article>
+    </a>
   </div>
 </section>
 
-<section class="card portfolio-section">
+<section class="card portfolio-section" id="selected-works">
   <h2>Selected Works</h2>
   <div class="selected-grid">
-    <article class="selected-card">
-      <h3>Our Memories</h3>
-      <p class="project-tags">Album · Firebase · Cloudinary</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>ER Profile Maker</h3>
-      <p class="project-tags">API · Cache · Canvas</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>ERTI</h3>
-      <p class="project-tags">Eternal Return · MBTI · Playstyle</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>Yachiyo</h3>
-      <p class="project-tags">AI · Memory · Persona</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>Waiting Queue Arcade</h3>
-      <p class="project-tags">Canvas · Mini Games</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>Eternal Return Search</h3>
-      <p class="project-tags">API · SQLite · Stats</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>Sora</h3>
-      <p class="project-tags">Discord · Commands · Community</p>
-    </article>
-
-    <article class="selected-card">
-      <h3>Memoti</h3>
-      <p class="project-tags">Memo · Alarm · Firebase</p>
-    </article>
+    <a class="project-link" href="{{ '/projects/stock-auto-trader.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">01</span><span class="project-arrow">↗</span></div><div><h3>StockAutoTrader</h3><p class="project-tags">C++ · Qt · KIS API</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/our-memories.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">02</span><span class="project-arrow">↗</span></div><div><h3>Our Memories</h3><p class="project-tags">Album · Firebase · Cloudinary</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/erti.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">03</span><span class="project-arrow">↗</span></div><div><h3>ERTI</h3><p class="project-tags">ER Analytics · API · Cache</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/er-profile-maker.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">04</span><span class="project-arrow">↗</span></div><div><h3>ER Profile Maker</h3><p class="project-tags">Canvas · API · Image Export</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/yachiyo.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">05</span><span class="project-arrow">↗</span></div><div><h3>Yachiyo</h3><p class="project-tags">AI · Memory · Persona</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/yoru-browser.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">06</span><span class="project-arrow">↗</span></div><div><h3>Yoru Browser</h3><p class="project-tags">C++ · Qt · WebEngine</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/waiting-queue-arcade.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">07</span><span class="project-arrow">↗</span></div><div><h3>Waiting Queue Arcade</h3><p class="project-tags">Canvas · Mini Games</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/eternal-return-search.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">08</span><span class="project-arrow">↗</span></div><div><h3>Eternal Return Search</h3><p class="project-tags">API · SQLite · Stats</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/sora.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">09</span><span class="project-arrow">↗</span></div><div><h3>Sora</h3><p class="project-tags">Discord · Commands · Events</p></div></article></a>
+    <a class="project-link" href="{{ '/projects/memoti.html' | relative_url }}"><article class="selected-card"><div class="project-topline"><span class="project-index">10</span><span class="project-arrow">↗</span></div><div><h3>Memoti</h3><p class="project-tags">Memo · Alarm · Firebase</p></div></article></a>
   </div>
 </section>
