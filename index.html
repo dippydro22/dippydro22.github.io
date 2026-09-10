@@ -4,63 +4,69 @@ title: YORU | C++ Programmer
 ---
 
 <style>
-.portfolio-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 14px;
+.profile-meta {
   margin-top: 18px;
-  font-weight: 900;
-  font-size: 1rem;
+  display: grid;
+  gap: 8px;
+  font-weight: 800;
 }
-.portfolio-keywords span {
-  display: inline-block;
-  border-bottom: 2px solid var(--border);
+.profile-meta-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+}
+.profile-meta-label {
+  color: var(--subtle);
+  font-size: .78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.profile-meta-value {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-.featured-projects {
+.portfolio-section {
   margin-bottom: 28px;
 }
-.featured-projects h2 {
+.portfolio-section h2 {
   margin: 0 0 18px;
   padding-bottom: 10px;
   border-bottom: 4px solid var(--border);
   font-size: 1.6rem;
   font-weight: 900;
 }
+
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
-.featured-card {
-  min-height: 170px;
+.project-card {
+  min-height: 164px;
   border: 3px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  text-decoration: none;
   padding: 20px;
   box-shadow: 5px 5px 0 var(--border);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform .1s ease, box-shadow .1s ease;
 }
-.featured-card:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 3px 3px 0 var(--border);
-}
-.featured-card h3 {
+.project-card h3 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 900;
 }
-.featured-tags {
+.project-tags {
   margin: 12px 0 18px;
   color: var(--subtle);
   font-weight: 800;
   line-height: 1.45;
 }
-.featured-status {
+.project-status {
   align-self: flex-start;
   border: 2px solid var(--border);
   background: var(--text);
@@ -71,9 +77,36 @@ title: YORU | C++ Programmer
   letter-spacing: .4px;
 }
 
+.selected-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.selected-card {
+  min-height: 124px;
+  border: 3px solid var(--border);
+  background: var(--surface);
+  padding: 18px 20px;
+  box-shadow: 4px 4px 0 var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.selected-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 900;
+}
+.selected-card .project-tags {
+  margin: 10px 0 0;
+  font-size: .88rem;
+}
+
 @media (max-width: 860px) {
-  .featured-grid { grid-template-columns: 1fr; }
-  .featured-card { min-height: 140px; }
+  .featured-grid,
+  .selected-grid { grid-template-columns: 1fr; }
+  .project-card,
+  .selected-card { min-height: 130px; }
 }
 </style>
 
@@ -86,13 +119,19 @@ title: YORU | C++ Programmer
         <img class="profile-image" src="{{ '/image/profile.jpg' | relative_url }}" alt="YORU profile" />
       </div>
 
-      <div class="portfolio-keywords">
-        <span>C++</span>
-        <span>Qt</span>
-        <span>Windows</span>
-        <span>Game Server</span>
-        <span>Network</span>
-        <span>Multithreading</span>
+      <div class="profile-meta">
+        <div class="profile-meta-row">
+          <span class="profile-meta-label">Education</span>
+          <span class="profile-meta-value">Hongik University</span>
+        </div>
+        <div class="profile-meta-row">
+          <span class="profile-meta-label">Location</span>
+          <span class="profile-meta-value">Seoul, Korea</span>
+        </div>
+        <div class="profile-meta-row">
+          <span class="profile-meta-label">Contact</span>
+          <span class="profile-meta-value">dippy@kakao.com</span>
+        </div>
       </div>
     </div>
 
@@ -118,61 +157,71 @@ title: YORU | C++ Programmer
   </div>
 </section>
 
-<section class="card featured-projects">
+<section class="card portfolio-section">
   <h2>Featured Projects</h2>
   <div class="featured-grid">
-    <a class="featured-card" href="https://github.com/dippydro22/MyCode/tree/main/cpp-game-server" target="_blank" rel="noopener noreferrer">
+    <article class="project-card">
       <div>
         <h3>C++ Game Server</h3>
-        <p class="featured-tags">Session · Room · JobQueue</p>
+        <p class="project-tags">Session · Room · JobQueue</p>
       </div>
-      <span class="featured-status">BUILDING</span>
-    </a>
+      <span class="project-status">BUILDING</span>
+    </article>
 
-    <a class="featured-card" href="https://github.com/dippydro22/friendspang" target="_blank" rel="noopener noreferrer">
+    <article class="project-card">
       <div>
         <h3>FriendsPang</h3>
-        <p class="featured-tags">Match · Gravity · Combo</p>
+        <p class="project-tags">Match · Gravity · Combo</p>
       </div>
-      <span class="featured-status">GAME</span>
-    </a>
+      <span class="project-status">GAME</span>
+    </article>
 
-    <a class="featured-card" href="{{ '/side-project-withmovie.html' | relative_url }}">
+    <article class="project-card">
       <div>
         <h3>MovieTogether</h3>
-        <p class="featured-tags">Room · Sync · State</p>
+        <p class="project-tags">Room · Sync · State</p>
       </div>
-      <span class="featured-status">SERVER</span>
-    </a>
+      <span class="project-status">SERVER</span>
+    </article>
   </div>
 </section>
 
-<details class="floating-side-projects">
-  <summary>Side Projects</summary>
-  <div class="floating-side-projects-body">
-    <h2 class="project-list-title">Side Projects</h2>
-    <ul class="side-project-list">
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-group-management.html' | relative_url }}">Group Management</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-personal-memo-alarm.html' | relative_url }}">Memo &amp; Alarm</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-eternal-return-search.html' | relative_url }}">Eternal Return Search</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-ertwit.html' | relative_url }}">ER Profile Maker</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-withmovie.html' | relative_url }}">MovieTogether</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-arcade.html' | relative_url }}">Arcade</a>
-      </li>
-      <li class="side-project-item">
-        <a class="side-project-item-link" href="{{ '/side-project-erti.html' | relative_url }}">ER MBTI</a>
-      </li>
-    </ul>
+<section class="card portfolio-section">
+  <h2>Selected Works</h2>
+  <div class="selected-grid">
+    <article class="selected-card">
+      <h3>Our Memories</h3>
+      <p class="project-tags">Album · Firebase · Cloudinary</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>EternalReturnTwit</h3>
+      <p class="project-tags">API · Cache · Service</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>Yachiyo</h3>
+      <p class="project-tags">AI · Memory · Persona</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>Waiting Queue Arcade</h3>
+      <p class="project-tags">Canvas · Mini Games</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>Eternal Return Search</h3>
+      <p class="project-tags">API · SQLite · Stats</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>Sora</h3>
+      <p class="project-tags">Discord · Commands · Community</p>
+    </article>
+
+    <article class="selected-card">
+      <h3>Memoti</h3>
+      <p class="project-tags">Memo · Alarm · Firebase</p>
+    </article>
   </div>
-</details>
+</section>
