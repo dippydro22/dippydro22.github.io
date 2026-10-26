@@ -129,6 +129,147 @@ title: YORU | C++ Programmer
   .project-card,
   .selected-card { min-height: 110px; }
 }
+
+/* The project showcase is the bridge from this developer portfolio to the full archive.
+   Green and black match the destination without changing the existing monochrome layout. */
+.project-hub { margin-bottom: 28px; }
+.project-hub-link {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(24px, 4.5vw, 56px); align-items: center;
+  padding: clamp(24px, 4vw, 44px);
+  color: #f4fff5; text-decoration: none;
+  border: 4px solid var(--border);
+  background: linear-gradient(135deg, #0c1e12 0%, #09140d 55%, #061008 100%);
+  box-shadow: 6px 6px 0px var(--border);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.project-hub-link::before {
+  content: ""; pointer-events: none; position: absolute; z-index: -1; inset: 0;
+  background: radial-gradient(circle at 84% 25%, rgba(69, 225, 122, .14), transparent 48%);
+}
+.project-hub-link:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px var(--border);
+}
+.project-hub-link:focus-visible { outline: 3px solid #43df83; outline-offset: 5px; }
+.project-hub-copy, .hub-preview { position: relative; min-width: 0; }
+.hub-kicker, .hub-stats, .hub-preview, .hub-action, .hub-preview-caption {
+  font-family: "Pretendard", sans-serif;
+}
+.hub-kicker {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  color: #9dd6b0; letter-spacing: .15em; font-size: .67rem; font-weight: 800;
+}
+.hub-pulse {
+  width: 8px; height: 8px; flex: none; border-radius: 50%;
+  background: #43df83; box-shadow: 0 0 16px rgba(67,223,131,.8);
+}
+.hub-kicker-index { color: #638a6d; }
+.project-hub h2 {
+  font: 900 clamp(3.35rem, 6.2vw, 5.25rem)/.96 "Pretendard", sans-serif;
+  letter-spacing: -.075em; margin: 26px 0 21px;
+  color: #fff; border: 0; padding: 0; overflow-wrap: normal;
+}
+.project-hub h2 span { color: #43df83; }
+.project-hub-copy > p {
+  margin: 0; max-width: 510px; color: #abc8b3;
+  font: 500 .93rem/1.85 "Pretendard", sans-serif;
+  word-break: keep-all;
+}
+.hub-stats {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 16px;
+  color: #a1b9a7; font-size: .66rem; font-weight: 800; letter-spacing: .08em;
+  margin: 25px 0 31px;
+}
+.hub-stats strong { color: #52e58d; font-size: 1.1rem; margin-right: 6px; }
+.hub-stats-divider { width: 1px; height: 17px; background: #345943; }
+.hub-action {
+  display: inline-flex; align-items: center; gap: 18px;
+  min-height: 53px; padding: 7px 8px 7px 20px;
+  border: 2px solid #43df83; background: #43df83; color: #082015;
+  font-size: .83rem; font-weight: 900; letter-spacing: -.02em;
+  box-shadow: 4px 4px 0px #1a6338;
+  transition: background .2s ease, color .2s ease;
+}
+.hub-action-icon {
+  width: 35px; height: 35px; display: grid; place-items: center;
+  background: #0b2918; color: #b2facd; font-size: 1.3rem;
+  transition: transform .2s ease;
+}
+.project-hub-link:hover .hub-action { background: #99f7b8; }
+.project-hub-link:hover .hub-action-icon { transform: translate(2px, -2px); }
+.hub-preview { display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.hub-preview-window {
+  width: 100%; min-width: 0; border-radius: 12px; overflow: hidden;
+  border: 1px solid #42664e; background: #09120c;
+  box-shadow: 14px 17px 0px rgba(29, 90, 46, .26), 0 30px 55px rgba(0,0,0,.34);
+  transform: rotate(1.8deg);
+}
+.hub-preview-header, .hub-preview-bottom {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 12px 14px; color: #85b79a;
+  font-size: .54rem; font-weight: 800; letter-spacing: .11em;
+}
+.hub-preview-header { border-bottom: 1px solid #224331; }
+.hub-preview-dots { display: flex; gap: 4px; }
+.hub-preview-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #387b51; }
+.hub-preview-dots i:first-child { background: #43df83; }
+.hub-preview-mark { color: #45dc85; font-size: 1rem; line-height: 1; }
+.hub-preview-stage {
+  min-height: 214px; padding: 22px 16px 17px;
+  background: radial-gradient(ellipse at 90% 15%, rgba(43,163,80,.15), transparent 55%),
+              linear-gradient(90deg, rgba(88,163,105,.055) 1px, transparent 1px),
+              linear-gradient(rgba(88,163,105,.055) 1px, transparent 1px);
+  background-size: auto, 24px 24px, 24px 24px;
+}
+.hub-preview-overline { color: #88b295; letter-spacing: .12em; font-size: .54rem; font-weight: 700; }
+.hub-preview-stage > strong {
+  display: block; margin: 11px 0 24px; color: #f2fff5;
+  font-size: clamp(1.75rem, 3vw, 2.8rem); line-height: .97; letter-spacing: -.06em;
+}
+.hub-preview-stage > strong em { font-style: normal; color: #43df83; }
+.hub-preview-cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; }
+.hub-preview-cards > div {
+  min-width: 0; aspect-ratio: 1.28; padding: 11px 8px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border: 1px solid #32553d; background: linear-gradient(140deg,#1a492b,#0b2215);
+}
+.hub-preview-cards > div:nth-child(2) { background: linear-gradient(140deg,#24492e,#173422); }
+.hub-preview-cards > div:nth-child(3) { background: linear-gradient(140deg,#1c6339,#0d301d); }
+.hub-preview-cards span { color: #9dddaf; font-size: .46rem; letter-spacing: .05em; }
+.hub-preview-cards b { font-size: clamp(.65rem, 1.2vw, .86rem); letter-spacing: -.045em; line-height: 1.2; }
+.hub-preview-cards small { color: #86b498; font-size: .48rem; }
+.hub-preview-bottom { border-top: 1px solid #224331; color: #6d9d7a; }
+.hub-preview-bottom span:last-child { color: #43df83; }
+.hub-preview-caption { text-align: right; color: #6e9c7d; font-size: .57rem; letter-spacing: .12em; font-weight: 700; }
+@media(max-width: 860px) {
+  .project-hub-link { grid-template-columns: minmax(0,1fr); gap: 33px; }
+  .project-hub h2 { font-size: clamp(3.25rem, 11vw, 5.4rem); }
+  .hub-preview { max-width: 590px; }
+  .hub-preview-stage > strong { font-size: clamp(2.4rem, 7vw, 3rem); }
+  .hub-preview-cards b { font-size: clamp(.8rem, 2.6vw, 1.2rem); }
+}
+@media(max-width: 520px) {
+  .project-hub-link { padding: 24px 20px; }
+  .project-hub h2 { font-size: clamp(2.9rem, 11vw, 3.7rem); margin: 22px 0; }
+  .project-hub-copy > p { font-size: .81rem; }
+  .project-hub-copy > p br { display: none; }
+  .hub-stats { gap: 9px; font-size: .56rem; }
+  .hub-stats strong { font-size: .99rem; }
+  .hub-action { width: 100%; justify-content: space-between; }
+  .hub-preview-window { transform: none; box-shadow: 6px 8px 0px rgba(29,90,46,.3); }
+  .hub-preview-stage { min-height: 192px; }
+  .hub-preview-stage > strong { font-size: 2.05rem; }
+  .hub-preview-cards > div { padding: 7px 5px; }
+  .hub-preview-cards b { font-size: .72rem; }
+  .hub-preview-cards span, .hub-preview-cards small { font-size: .44rem; }
+  .hub-preview-header, .hub-preview-bottom { font-size: .49rem; }
+}
+@media(prefers-reduced-motion: reduce) {
+  .project-hub-link, .hub-action, .hub-action-icon { transition: none; }
+}
+
 </style>
 
 <section class="hero">
@@ -176,6 +317,43 @@ title: YORU | C++ Programmer
       </div>
     </aside>
   </div>
+</section>
+
+
+<section class="project-hub portfolio-section" aria-labelledby="project-hub-title">
+  <a class="project-hub-link" href="https://yoruprojects.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="YORU PROJECTS 전체 프로젝트 전시관 보기 (새 창)">
+    <div class="project-hub-copy">
+      <div class="hub-kicker"><span class="hub-pulse" aria-hidden="true"></span> COMPLETE PROJECT ARCHIVE <span class="hub-kicker-index">/ 2026</span></div>
+      <h2 id="project-hub-title">YORU<br><span>PROJECTS.</span></h2>
+      <p>웹 서비스부터 커뮤니티 도구, 게임, 데스크톱 프로그램까지.<br>직접 개발한 프로젝트를 하나의 전시관에서 확인할 수 있습니다.</p>
+      <div class="hub-stats" aria-label="전체 프로젝트 구성">
+        <span><strong>11</strong> WEB PROJECTS</span>
+        <span class="hub-stats-divider" aria-hidden="true"></span>
+        <span><strong>01</strong> DESKTOP APP</span>
+      </div>
+      <span class="hub-action">전체 프로젝트 전시관 보기 <span class="hub-action-icon" aria-hidden="true">↗</span></span>
+    </div>
+    <div class="hub-preview" aria-hidden="true">
+      <div class="hub-preview-window">
+        <div class="hub-preview-header">
+          <span class="hub-preview-dots"><i></i><i></i><i></i></span>
+          <span>YORU / PROJECTS</span>
+          <span class="hub-preview-mark">✳</span>
+        </div>
+        <div class="hub-preview-stage">
+          <span class="hub-preview-overline">INDEPENDENT DIGITAL LAB</span>
+          <strong>THINGS<br>WE <em>BUILD.</em></strong>
+          <div class="hub-preview-cards">
+            <div><span>01 / CONNECT</span><b>ER QUEUE</b><small>MATCHING</small></div>
+            <div><span>02 / CREATE</span><b>SHEET PAGE</b><small>PORTFOLIO</small></div>
+            <div><span>03 / PLAY</span><b>YORU LEAGUE</b><small>EVENT</small></div>
+          </div>
+        </div>
+        <div class="hub-preview-bottom"><span>11 PROJECTS / 01 APP</span><span>EXPLORE ↗</span></div>
+      </div>
+      <span class="hub-preview-caption">PROJECT SHOWCASE — ALL IN ONE PLACE</span>
+    </div>
+  </a>
 </section>
 
 <section class="card portfolio-section" id="featured-projects">
